@@ -1,13 +1,16 @@
 {
-    "name": "Furkan Çağlar - Portfolio",
-    "short_name": "FC Portfolio",
+    "name": "Furkan Çağlar - Flutter Developer & Software Engineer Portfolio",
+    "short_name": "Furkan Çağlar",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#1A1A1A",
     "theme_color": "#4ECDC4",
-    "description": "Furkan Çağlar's Portfolio Website - Flutter Developer & Software Engineer",
+    "description": "Professional portfolio of Furkan Çağlar - Experienced Flutter Developer & Software Engineer with 2+ years in cross-platform mobile development, Firebase integration, and published mobile applications. Specialized in Flutter, Android, and modern mobile technologies.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "categories": ["portfolio", "developer", "mobile", "flutter", "software"],
+    "lang": "en",
+    "dir": "ltr",
     "icons": [
         {
             "src": "icons/Icon-192.png",

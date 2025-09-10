@@ -60,6 +60,12 @@ class Contact extends StatelessWidget {
                   FontAwesomeIcons.linkedin,
                   'https://www.linkedin.com/in/furkanages/',
                 ),
+                const SizedBox(height: 16),
+                _buildSocialButton(
+                  'Email',
+                  FontAwesomeIcons.envelope,
+                  'mailto:caglarrfurkann@gmail.com',
+                ),
               ],
             )
           else
@@ -79,6 +85,16 @@ class Contact extends StatelessWidget {
                 ),
               ],
             ),
+          const SizedBox(height: 16),
+          SelectableText(
+            'caglarrfurkann@gmail.com',
+            style: TextStyle(
+              fontSize: 16,
+              color:
+                  Theme.of(context).colorScheme.onBackground.withOpacity(0.8),
+            ),
+            textAlign: TextAlign.center,
+          ),
         ],
       ),
     );
@@ -86,7 +102,14 @@ class Contact extends StatelessWidget {
 
   Widget _buildSocialButton(String title, IconData icon, String url) {
     return ElevatedButton.icon(
-      onPressed: () => launchUrl(Uri.parse(url)),
+      onPressed: () {
+        final uri = Uri.parse(url);
+        if (uri.scheme == 'mailto') {
+          launchUrl(uri, mode: LaunchMode.externalApplication);
+        } else {
+          launchUrl(uri);
+        }
+      },
       icon: FaIcon(icon),
       label: Text(title),
       style: ElevatedButton.styleFrom(

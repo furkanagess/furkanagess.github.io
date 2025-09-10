@@ -4,12 +4,196 @@ import 'package:portfolio/core/localization/app_localizations.dart';
 import 'package:portfolio/widgets/language_switcher.dart';
 import 'dart:html' as html;
 
+class HeaderBar extends StatelessWidget {
+  final Function(int) onSectionClick;
+
+  const HeaderBar({super.key, required this.onSectionClick});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isSmallScreen = MediaQuery.of(context).size.width < 768;
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface.withOpacity(0.8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => onSectionClick(0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.primary.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        'FC',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      'Furkan Caglar',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (isSmallScreen)
+              Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(
+                    Icons.menu,
+                    color: theme.colorScheme.primary,
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => Container(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const LanguageSwitcher(),
+                            const SizedBox(height: 20),
+                            _NavButton(
+                              title: AppLocalizations.of(context).get('home'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(0);
+                              },
+                              theme: theme,
+                            ),
+                            _NavButton(
+                              title: AppLocalizations.of(context).get('about'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(1);
+                              },
+                              theme: theme,
+                            ),
+                            _NavButton(
+                              title: AppLocalizations.of(context).get('skills'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(2);
+                              },
+                              theme: theme,
+                            ),
+                            _NavButton(
+                              title:
+                                  AppLocalizations.of(context).get('projects'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(3);
+                              },
+                              theme: theme,
+                            ),
+                            _NavButton(
+                              title: AppLocalizations.of(context).get('apps'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(4);
+                              },
+                              theme: theme,
+                            ),
+                            _NavButton(
+                              title:
+                                  AppLocalizations.of(context).get('contact'),
+                              onTap: () {
+                                Navigator.pop(context);
+                                onSectionClick(5);
+                              },
+                              theme: theme,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              )
+            else
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    const LanguageSwitcher(),
+                    const SizedBox(width: 20),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('home'),
+                      onTap: () => onSectionClick(0),
+                      theme: theme,
+                    ),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('about'),
+                      onTap: () => onSectionClick(1),
+                      theme: theme,
+                    ),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('skills'),
+                      onTap: () => onSectionClick(2),
+                      theme: theme,
+                    ),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('projects'),
+                      onTap: () => onSectionClick(3),
+                      theme: theme,
+                    ),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('apps'),
+                      onTap: () => onSectionClick(4),
+                      theme: theme,
+                    ),
+                    _NavButton(
+                      title: AppLocalizations.of(context).get('contact'),
+                      onTap: () => onSectionClick(5),
+                      theme: theme,
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class Header extends StatelessWidget {
   final Function(int) onSectionClick;
+  final bool showTopBar;
 
   const Header({
     super.key,
     required this.onSectionClick,
+    this.showTopBar = true,
   });
 
   Future<void> _downloadCV(BuildContext context) async {
@@ -33,180 +217,7 @@ class Header extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface.withOpacity(0.8),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 10,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 1200),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: () => onSectionClick(0),
-                      child: Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.primary.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              'FC',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: theme.colorScheme.primary,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Text(
-                            'Furkan Caglar',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: theme.colorScheme.primary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  if (isSmallScreen)
-                    Builder(
-                      builder: (context) => IconButton(
-                        icon: Icon(
-                          Icons.menu,
-                          color: theme.colorScheme.primary,
-                        ),
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) => Container(
-                              padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const LanguageSwitcher(),
-                                  const SizedBox(height: 20),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('home'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(0);
-                                    },
-                                    theme: theme,
-                                  ),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('about'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(1);
-                                    },
-                                    theme: theme,
-                                  ),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('skills'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(2);
-                                    },
-                                    theme: theme,
-                                  ),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('projects'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(3);
-                                    },
-                                    theme: theme,
-                                  ),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('apps'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(4);
-                                    },
-                                    theme: theme,
-                                  ),
-                                  _NavButton(
-                                    title: AppLocalizations.of(context)
-                                        .get('contact'),
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      onSectionClick(5);
-                                    },
-                                    theme: theme,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    )
-                  else
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          const LanguageSwitcher(),
-                          const SizedBox(width: 20),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('home'),
-                            onTap: () => onSectionClick(0),
-                            theme: theme,
-                          ),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('about'),
-                            onTap: () => onSectionClick(1),
-                            theme: theme,
-                          ),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('skills'),
-                            onTap: () => onSectionClick(2),
-                            theme: theme,
-                          ),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('projects'),
-                            onTap: () => onSectionClick(3),
-                            theme: theme,
-                          ),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('apps'),
-                            onTap: () => onSectionClick(4),
-                            theme: theme,
-                          ),
-                          _NavButton(
-                            title: AppLocalizations.of(context).get('contact'),
-                            onTap: () => onSectionClick(5),
-                            theme: theme,
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ),
+          if (showTopBar) HeaderBar(onSectionClick: onSectionClick),
           Center(
             child: Container(
               constraints: const BoxConstraints(maxWidth: 1200),

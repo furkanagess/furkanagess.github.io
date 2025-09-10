@@ -29,6 +29,7 @@ class BackgroundPattern extends StatelessWidget {
             ),
           ),
         ),
+        // Large soft glow
         Positioned.fill(
           child: Container(
             decoration: BoxDecoration(
@@ -37,17 +38,36 @@ class BackgroundPattern extends StatelessWidget {
                 center: isEven
                     ? const Alignment(-0.8, -0.6)
                     : const Alignment(0.8, -0.6),
-                radius: 1.1,
+                radius: 1.2,
                 colors: [
-                  Theme.of(context).colorScheme.primary.withOpacity(0.05),
-                  Colors.transparent,
+                  Theme.of(context).colorScheme.primary.withOpacity(0.08),
                   Colors.transparent,
                 ],
-                stops: const [0.0, 0.4, 1.0],
+                stops: const [0.0, 1.0],
               ),
             ),
           ),
         ),
+        // Secondary accent glow
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+              backgroundBlendMode: BlendMode.overlay,
+              gradient: RadialGradient(
+                center: isEven
+                    ? const Alignment(0.7, 0.8)
+                    : const Alignment(-0.7, 0.8),
+                radius: 0.9,
+                colors: [
+                  Theme.of(context).colorScheme.secondary.withOpacity(0.06),
+                  Colors.transparent,
+                ],
+                stops: const [0.0, 1.0],
+              ),
+            ),
+          ),
+        ),
+        // Subtle vertical sheen
         Positioned.fill(
           child: ShaderMask(
             blendMode: BlendMode.srcOut,
@@ -56,7 +76,7 @@ class BackgroundPattern extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                Theme.of(context).colorScheme.primary.withOpacity(0.03),
+                Theme.of(context).colorScheme.primary.withOpacity(0.05),
                 Colors.transparent,
               ],
               stops: const [0.2, 0.5, 0.8],
@@ -64,6 +84,26 @@ class BackgroundPattern extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.transparent,
+              ),
+            ),
+          ),
+        ),
+        // Grainy overlay for texture
+        Positioned.fill(
+          child: IgnorePointer(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.white.withOpacity(0.02),
+                    Colors.transparent,
+                    Colors.white.withOpacity(0.015),
+                    Colors.transparent,
+                  ],
+                  stops: const [0.0, 0.35, 0.7, 1.0],
+                ),
               ),
             ),
           ),

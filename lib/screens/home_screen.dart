@@ -5,6 +5,8 @@ import 'package:portfolio/widgets/projects.dart';
 import 'package:portfolio/widgets/skills.dart';
 import 'package:portfolio/widgets/contact.dart';
 import 'package:portfolio/widgets/published_apps.dart';
+import 'package:portfolio/widgets/background_pattern.dart';
+import 'package:portfolio/widgets/header.dart' show HeaderBar;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,21 +39,54 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Column(
-          children: [
-            Header(
-              key: _sectionKeys[0],
-              onSectionClick: scrollToSection,
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 80),
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
+                children: [
+                  BackgroundPattern(
+                    isEven: false,
+                    child: Header(
+                      key: _sectionKeys[0],
+                      onSectionClick: scrollToSection,
+                      showTopBar: false,
+                    ),
+                  ),
+                  BackgroundPattern(
+                    isEven: true,
+                    child: About(key: _sectionKeys[1]),
+                  ),
+                  BackgroundPattern(
+                    isEven: false,
+                    child: Skills(key: _sectionKeys[2]),
+                  ),
+                  BackgroundPattern(
+                    isEven: true,
+                    child: Projects(key: _sectionKeys[3]),
+                  ),
+                  BackgroundPattern(
+                    isEven: false,
+                    child: PublishedApps(key: _sectionKeys[4]),
+                  ),
+                  BackgroundPattern(
+                    isEven: true,
+                    child: Contact(key: _sectionKeys[5]),
+                  ),
+                ],
+              ),
             ),
-            About(key: _sectionKeys[1]),
-            Skills(key: _sectionKeys[2]),
-            Projects(key: _sectionKeys[3]),
-            PublishedApps(key: _sectionKeys[4]),
-            Contact(key: _sectionKeys[5]),
-          ],
-        ),
+          ),
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background.withOpacity(0.0),
+            ),
+            child: HeaderBar(onSectionClick: scrollToSection),
+          ),
+        ],
       ),
     );
   }

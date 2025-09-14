@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/widgets/background_pattern.dart';
 import 'package:portfolio/core/localization/app_localizations.dart';
+import 'package:portfolio/widgets/interactive.dart';
 
 class PublishedApps extends StatelessWidget {
   const PublishedApps({super.key});
@@ -78,47 +79,59 @@ class PublishedApps extends StatelessWidget {
                 runSpacing: 30,
                 alignment: WrapAlignment.center,
                 children: [
-                  _buildAppCard(
-                    context,
-                    title: 'Quicko – Minigames',
-                    imagePath: 'assets/icons/new_logo.png',
-                    description: AppLocalizations.of(context)
-                        .get('app_quicko_description'),
-                    features: [
-                      AppLocalizations.of(context).get('app_quicko_feature_1'),
-                      AppLocalizations.of(context).get('app_quicko_feature_2'),
-                      AppLocalizations.of(context).get('app_quicko_feature_3'),
-                      AppLocalizations.of(context).get('app_quicko_feature_4'),
-                      AppLocalizations.of(context).get('app_quicko_feature_5'),
-                      AppLocalizations.of(context).get('app_quicko_feature_6'),
-                    ],
-                    androidUrl:
-                        'https://play.google.com/store/apps/details?id=com.furkanages.quicko_app',
-                    iosUrl:
-                        'https://apps.apple.com/us/app/quicko-minigames/id6751204576',
+                  Reveal(
+                    delay: const Duration(milliseconds: 80),
+                    child: _buildAppCard(
+                      context,
+                      title: 'Quicko – Minigames',
+                      imagePath: 'assets/icons/new_logo.png',
+                      description: AppLocalizations.of(context)
+                          .get('app_quicko_description'),
+                      features: [
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_1'),
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_2'),
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_3'),
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_4'),
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_5'),
+                        AppLocalizations.of(context)
+                            .get('app_quicko_feature_6'),
+                      ],
+                      androidUrl:
+                          'https://play.google.com/store/apps/details?id=com.furkanages.quicko_app',
+                      iosUrl:
+                          'https://apps.apple.com/us/app/quicko-minigames/id6751204576',
+                    ),
                   ),
-                  _buildAppCard(
-                    context,
-                    title: 'Periodic Table: Learn & Play',
-                    imagePath: 'assets/icons/elements_logo.png',
-                    description: AppLocalizations.of(context)
-                        .get('app_elements_description'),
-                    features: [
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_1'),
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_2'),
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_3'),
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_4'),
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_5'),
-                      AppLocalizations.of(context)
-                          .get('app_elements_feature_6'),
-                    ],
-                    androidUrl:
-                        'https://play.google.com/store/apps/details?id=com.furkanages.elements',
+                  Reveal(
+                    delay: const Duration(milliseconds: 160),
+                    child: _buildAppCard(
+                      context,
+                      title: 'Periodic Table: Learn & Play',
+                      imagePath: 'assets/icons/elements_logo.png',
+                      description: AppLocalizations.of(context)
+                          .get('app_elements_description'),
+                      features: [
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_1'),
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_2'),
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_3'),
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_4'),
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_5'),
+                        AppLocalizations.of(context)
+                            .get('app_elements_feature_6'),
+                      ],
+                      androidUrl:
+                          'https://play.google.com/store/apps/details?id=com.furkanages.elements',
+                    ),
                   ),
                 ],
               ),
@@ -140,115 +153,114 @@ class PublishedApps extends StatelessWidget {
   }) {
     final theme = Theme.of(context);
     final isSmallScreen = MediaQuery.of(context).size.width < 768;
-    return Container(
-      width: isSmallScreen ? double.infinity : 500,
-      padding: const EdgeInsets.all(30),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+    return HoverScale(
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 20,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              if (imagePath != null) ...[
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    imagePath,
-                    height: 56,
-                    width: 56,
-                    fit: BoxFit.contain,
-                  ),
-                ),
-                const SizedBox(width: 16),
-              ],
-              Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: isSmallScreen ? 20 : 24,
-                    fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.onSurface,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 16,
-              height: 1.6,
-              color: theme.colorScheme.onSurface.withOpacity(0.8),
+        child: Container(
+          width: isSmallScreen ? double.infinity : 500,
+          padding: const EdgeInsets.all(30),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: theme.colorScheme.primary.withOpacity(0.08),
+              width: 1,
             ),
           ),
-          const SizedBox(height: 24),
-          Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: features
-                .map(
-                  (feature) => Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primary.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: theme.colorScheme.primary.withOpacity(0.2),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  if (imagePath != null) ...[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        imagePath,
+                        height: 56,
+                        width: 56,
+                        fit: BoxFit.contain,
                       ),
                     ),
+                    const SizedBox(width: 16),
+                  ],
+                  Expanded(
                     child: Text(
-                      feature,
+                      title,
                       style: TextStyle(
-                        fontSize: 14,
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w500,
+                        fontSize: isSmallScreen ? 20 : 24,
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.onSurface,
                       ),
                     ),
                   ),
-                )
-                .toList(),
-          ),
-          const SizedBox(height: 30),
-          Row(
-            children: [
-              Expanded(
-                child: _buildStoreButton(
-                  context,
-                  icon: FontAwesomeIcons.googlePlay,
-                  label: AppLocalizations.of(context).get('google_play'),
-                  onTap: () => _launchUrl(androidUrl),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Text(
+                description,
+                style: TextStyle(
+                  fontSize: 16,
+                  height: 1.6,
+                  color: theme.colorScheme.onSurface.withOpacity(0.8),
                 ),
               ),
-              if (iosUrl != null) ...[
-                const SizedBox(width: 16),
-                Expanded(
-                  child: _buildStoreButton(
-                    context,
-                    icon: FontAwesomeIcons.appStore,
-                    label: AppLocalizations.of(context).get('app_store'),
-                    onTap: () => _launchUrl(iosUrl),
+              const SizedBox(height: 24),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: features
+                    .map(
+                      (feature) => Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 6,
+                        ),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primary.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(
+                            color: theme.colorScheme.primary.withOpacity(0.2),
+                          ),
+                        ),
+                        child: Text(
+                          feature,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: theme.colorScheme.primary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+              const SizedBox(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: _buildStoreButton(
+                      context,
+                      icon: FontAwesomeIcons.googlePlay,
+                      label: AppLocalizations.of(context).get('google_play'),
+                      onTap: () => _launchUrl(androidUrl),
+                    ),
                   ),
-                ),
-              ],
+                  if (iosUrl != null) ...[
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _buildStoreButton(
+                        context,
+                        icon: FontAwesomeIcons.appStore,
+                        label: AppLocalizations.of(context).get('app_store'),
+                        onTap: () => _launchUrl(iosUrl),
+                      ),
+                    ),
+                  ],
+                ],
+              ),
             ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _buildStoreButton(
@@ -258,10 +270,10 @@ class PublishedApps extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     final theme = Theme.of(context);
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: onTap,
+    return Pressable(
+      onTap: onTap,
+      child: HoverScale(
+        borderRadius: BorderRadius.circular(12),
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(

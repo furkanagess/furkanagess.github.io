@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio/core/localization/app_localizations.dart';
+import 'package:portfolio/widgets/interactive.dart';
 
 class Contact extends StatelessWidget {
   const Contact({super.key});
@@ -49,22 +50,34 @@ class Contact extends StatelessWidget {
           if (isSmallScreen)
             Column(
               children: [
-                _buildSocialButton(
+                Reveal(
+                  delay: const Duration(milliseconds: 60),
+                  child: _buildSocialButton(
+                  context,
                   'GitHub',
                   FontAwesomeIcons.github,
                   'https://github.com/furkanagess',
+                  ),
                 ),
                 const SizedBox(height: 16),
-                _buildSocialButton(
+                Reveal(
+                  delay: const Duration(milliseconds: 120),
+                  child: _buildSocialButton(
+                  context,
                   'LinkedIn',
                   FontAwesomeIcons.linkedin,
                   'https://www.linkedin.com/in/furkanages/',
+                  ),
                 ),
                 const SizedBox(height: 16),
-                _buildSocialButton(
+                Reveal(
+                  delay: const Duration(milliseconds: 180),
+                  child: _buildSocialButton(
+                  context,
                   'Email',
                   FontAwesomeIcons.envelope,
                   'mailto:caglarrfurkann@gmail.com',
+                  ),
                 ),
               ],
             )
@@ -72,16 +85,24 @@ class Contact extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildSocialButton(
+                Reveal(
+                  delay: const Duration(milliseconds: 60),
+                  child: _buildSocialButton(
+                  context,
                   'GitHub',
                   FontAwesomeIcons.github,
                   'https://github.com/furkanagess',
+                  ),
                 ),
                 const SizedBox(width: 20),
-                _buildSocialButton(
+                Reveal(
+                  delay: const Duration(milliseconds: 120),
+                  child: _buildSocialButton(
+                  context,
                   'LinkedIn',
                   FontAwesomeIcons.linkedin,
                   'https://www.linkedin.com/in/furkanages/',
+                  ),
                 ),
               ],
             ),
@@ -100,9 +121,10 @@ class Contact extends StatelessWidget {
     );
   }
 
-  Widget _buildSocialButton(String title, IconData icon, String url) {
-    return ElevatedButton.icon(
-      onPressed: () {
+  Widget _buildSocialButton(BuildContext context, String title, IconData icon, String url) {
+    final theme = Theme.of(context);
+    return Pressable(
+      onTap: () {
         final uri = Uri.parse(url);
         if (uri.scheme == 'mailto') {
           launchUrl(uri, mode: LaunchMode.externalApplication);
@@ -110,10 +132,36 @@ class Contact extends StatelessWidget {
           launchUrl(uri);
         }
       },
-      icon: FaIcon(icon),
-      label: Text(title),
-      style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      child: HoverScale(
+        borderRadius: BorderRadius.circular(10),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                color: theme.colorScheme.primary.withOpacity(0.3),
+                blurRadius: 12,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FaIcon(icon, color: theme.colorScheme.onPrimary, size: 18),
+              const SizedBox(width: 10),
+              Text(
+                title,
+                style: TextStyle(
+                  color: theme.colorScheme.onPrimary,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

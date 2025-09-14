@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:portfolio/widgets/background_pattern.dart';
 import 'package:portfolio/core/localization/app_localizations.dart';
+import 'package:portfolio/widgets/interactive.dart';
 
 class Projects extends StatelessWidget {
   const Projects({super.key});
@@ -189,7 +190,10 @@ class Projects extends StatelessWidget {
                           7, // Toplam proje sayısı
                           (index) => SizedBox(
                             width: cardWidth,
-                            child: _getProjectCard(context, index),
+                            child: Reveal(
+                              delay: Duration(milliseconds: 60 * index),
+                              child: _getProjectCard(context, index),
+                            ),
                           ),
                         ),
                       ],
@@ -227,22 +231,19 @@ class ProjectCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isSmallScreen = MediaQuery.of(context).size.width < 768;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
+    return HoverScale(
+      borderRadius: BorderRadius.circular(15),
+      hoverColor: theme.colorScheme.surface.withOpacity(0.02),
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 180),
         padding: const EdgeInsets.all(25),
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          border: Border.all(
+            color: theme.colorScheme.primary.withOpacity(0.08),
+            width: 1,
+          ),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -323,10 +324,11 @@ class ProjectCard extends StatelessWidget {
                     .toList(),
               ),
               const SizedBox(height: 25),
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: () => launchUrl(Uri.parse(githubUrl)),
+              Pressable(
+                onTap: () => launchUrl(Uri.parse(githubUrl)),
+                child: HoverScale(
+                  borderRadius: BorderRadius.circular(10),
+                  hoverColor: theme.colorScheme.primary.withOpacity(0.05),
                   child: Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
@@ -335,6 +337,13 @@ class ProjectCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: theme.colorScheme.primary,
                       borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: theme.colorScheme.primary.withOpacity(0.3),
+                          blurRadius: 12,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,

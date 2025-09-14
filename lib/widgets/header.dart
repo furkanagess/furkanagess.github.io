@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:portfolio/core/localization/app_localizations.dart';
 import 'package:portfolio/widgets/language_switcher.dart';
+import 'package:portfolio/widgets/interactive.dart';
 import 'dart:html' as html;
 
 class HeaderBar extends StatelessWidget {
@@ -128,7 +129,7 @@ class HeaderBar extends StatelessWidget {
                                   AppLocalizations.of(context).get('contact'),
                               onTap: () {
                                 Navigator.pop(context);
-                                onSectionClick(5);
+                                onSectionClick(6);
                               },
                               theme: theme,
                             ),
@@ -173,7 +174,7 @@ class HeaderBar extends StatelessWidget {
                     ),
                     _NavButton(
                       title: AppLocalizations.of(context).get('contact'),
-                      onTap: () => onSectionClick(5),
+                      onTap: () => onSectionClick(6),
                       theme: theme,
                     ),
                   ],
@@ -346,10 +347,10 @@ class Header extends StatelessWidget {
                             const SizedBox(height: 40),
                             Column(
                               children: [
-                                MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: GestureDetector(
-                                    onTap: () => onSectionClick(4),
+                                Pressable(
+                                  onTap: () => onSectionClick(4),
+                                  child: HoverScale(
+                                    borderRadius: BorderRadius.circular(30),
                                     child: Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.symmetric(
@@ -382,10 +383,10 @@ class Header extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(height: 16),
-                                MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: GestureDetector(
-                                    onTap: () => onSectionClick(3),
+                                Pressable(
+                                  onTap: () => onSectionClick(3),
+                                  child: HoverScale(
+                                    borderRadius: BorderRadius.circular(30),
                                     child: Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.symmetric(
@@ -415,10 +416,10 @@ class Header extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(height: 16),
-                                MouseRegion(
-                                  cursor: SystemMouseCursors.click,
-                                  child: GestureDetector(
-                                    onTap: () => _downloadCV(context),
+                                Pressable(
+                                  onTap: () => _downloadCV(context),
+                                  child: HoverScale(
+                                    borderRadius: BorderRadius.circular(30),
                                     child: Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.symmetric(
@@ -541,10 +542,10 @@ class Header extends StatelessWidget {
                               const SizedBox(height: 40),
                               Row(
                                 children: [
-                                  MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: GestureDetector(
-                                      onTap: () => onSectionClick(4),
+                                  Pressable(
+                                    onTap: () => onSectionClick(4),
+                                    child: HoverScale(
+                                      borderRadius: BorderRadius.circular(30),
                                       child: Container(
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 24,
@@ -578,10 +579,11 @@ class Header extends StatelessWidget {
                                   const SizedBox(width: 20),
                                   Row(
                                     children: [
-                                      MouseRegion(
-                                        cursor: SystemMouseCursors.click,
-                                        child: GestureDetector(
-                                          onTap: () => onSectionClick(3),
+                                      Pressable(
+                                        onTap: () => onSectionClick(3),
+                                        child: HoverScale(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           child: Container(
                                             padding: const EdgeInsets.symmetric(
                                               horizontal: 24,
@@ -611,10 +613,11 @@ class Header extends StatelessWidget {
                                         ),
                                       ),
                                       const SizedBox(width: 16),
-                                      MouseRegion(
-                                        cursor: SystemMouseCursors.click,
-                                        child: GestureDetector(
-                                          onTap: () => _downloadCV(context),
+                                      Pressable(
+                                        onTap: () => _downloadCV(context),
+                                        child: HoverScale(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
                                           child: Container(
                                             padding: const EdgeInsets.symmetric(
                                               horizontal: 24,
@@ -743,26 +746,41 @@ class _NavButtonState extends State<_NavButton> {
         cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => isHovered = true),
         onExit: (_) => setState(() => isHovered = false),
-        child: GestureDetector(
+        child: Pressable(
           onTap: widget.onTap,
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 160),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: isHovered
-                  ? widget.theme.colorScheme.primary.withOpacity(0.1)
+                  ? widget.theme.colorScheme.primary.withOpacity(0.08)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Text(
-              widget.title,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: isHovered ? FontWeight.w600 : FontWeight.w500,
-                color: isHovered
-                    ? widget.theme.colorScheme.primary
-                    : widget.theme.colorScheme.onBackground,
-              ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  widget.title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: isHovered ? FontWeight.w600 : FontWeight.w500,
+                    color: isHovered
+                        ? widget.theme.colorScheme.primary
+                        : widget.theme.colorScheme.onBackground,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 180),
+                  height: 2,
+                  width: isHovered ? 22 : 0,
+                  decoration: BoxDecoration(
+                    color: widget.theme.colorScheme.primary,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

@@ -6,6 +6,7 @@ import 'package:portfolio/widgets/skills.dart';
 import 'package:portfolio/widgets/contact.dart';
 import 'package:portfolio/widgets/published_apps.dart';
 import 'package:portfolio/widgets/background_pattern.dart';
+import 'package:portfolio/widgets/medium_posts.dart';
 import 'package:portfolio/widgets/header.dart' show HeaderBar;
 
 class HomeScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
-  final List<GlobalKey> _sectionKeys = List.generate(6, (index) => GlobalKey());
+  final List<GlobalKey> _sectionKeys = List.generate(7, (index) => GlobalKey());
 
   void scrollToSection(int index) {
     final context = _sectionKeys[index].currentContext;
@@ -73,7 +74,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   BackgroundPattern(
                     isEven: true,
-                    child: Contact(key: _sectionKeys[5]),
+                    child: MediumPosts(key: _sectionKeys[5]),
+                  ),
+                  BackgroundPattern(
+                    isEven: false,
+                    child: Contact(key: _sectionKeys[6]),
                   ),
                 ],
               ),

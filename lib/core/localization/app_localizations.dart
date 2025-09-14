@@ -72,6 +72,19 @@ class AppLocalizations {
       'topic_educational': 'Educational Content',
       'topic_ui_components': 'UI Components',
       'topic_reusable_code': 'Reusable Code',
+      // Medium posts section
+      'medium_tag': 'Writings on Medium',
+      'medium_title': 'Latest Articles',
+      'medium_read_more': 'Read on Medium',
+      'medium_article_1_title': 'Flutter Environment Setup with Envied',
+      'medium_article_1_summary':
+          'Why and how to manage environment variables in Flutter. Covers secret management, build flavors, and using Envied to generate type-safe config.',
+      'medium_article_2_title': '10 Ways to Become an Unwanted Flutter Dev',
+      'medium_article_2_summary':
+          'A tongue-in-cheek guide that highlights common anti-patterns in Flutter teams. Read it in reverse to learn what to actually do and avoid pitfalls.',
+      'medium_article_3_title': 'Clean Widget Practices in Flutter',
+      'medium_article_3_summary':
+          'Guidelines for composing widgets with single responsibility, better readability, extract methods, and when to prefer Stateless vs Stateful.',
       'app_quicko_description':
           'A collection of 10+ quick and engaging minigames for instant fun and brain training. Features include global leaderboards, progress tracking, and support for 10 languages.',
       'app_quicko_feature_1': '10+ Fast & Fun Minigames',
@@ -131,6 +144,20 @@ class AppLocalizations {
       'skills_title': 'Skills',
       'technologies': 'Technologies I Work With',
       'click_details': 'Click for details',
+      'flutter_rec_exp':
+          '3 years professional experience, primarily in fintech.',
+      // Flutter recruiter-focused visible section
+      'flutter_rec_title': 'Flutter Development — Core Expertise',
+      'flutter_rec_intro':
+          'I design, build, and ship production-grade Flutter apps for mobile and web with a strong focus on scalability, performance, and maintainability. I combine clean architecture with pragmatic engineering to deliver UI/UX that feels native and is easy to evolve.',
+      'flutter_rec_b1': 'Architecture: Clean Architecture, MVVM, layered modules, feature-first structure',
+      'flutter_rec_b2': 'State: Provider, Bloc/Cubit; side-effects + error handling patterns',
+      'flutter_rec_b3': 'Networking: Dio/HTTP, interceptors, pagination, caching, offline-first',
+      'flutter_rec_b4': 'Performance: 60fps UIs, profile tools, image/asset optimization, isolates',
+      'flutter_rec_b5': 'Testing/QA: unit/widget tests, golden tests, CI-friendly builds',
+      'flutter_rec_b6': 'Stores/Release: signing, flavors, versioning, store metadata & privacy',
+      'flutter_rec_b7': 'Product: i18n/l10n, accessibility, analytics, growth experiments',
+      'flutter_rec_b8': 'DevEx: reusable widgets, design system, responsive web support',
       'flutter_expertise': 'Flutter Expertise',
       'android_expertise': 'Android Expertise',
       'firebase_expertise': 'Firebase Expertise',
@@ -214,6 +241,19 @@ class AppLocalizations {
       'topic_educational': 'Eğitici İçerik',
       'topic_ui_components': 'Arayüz Bileşenleri',
       'topic_reusable_code': 'Yeniden Kullanılabilir Kod',
+      // Medium posts section
+      'medium_tag': 'Medium Yazılarım',
+      'medium_title': 'Son Yazılar',
+      'medium_read_more': 'Medium’da Oku',
+      'medium_article_1_title': 'Flutter Environment Yapısı – Envied',
+      'medium_article_1_summary':
+          'Flutter’da environment değişkenleri neden ve nasıl yönetilir? Secret yönetimi, build flavor’lar ve Envied ile tip güvenli config üretimi anlatılır.',
+      'medium_article_2_title': '10 Adımda Sektörde Aranmayan Flutter Geliştiricisi Olun',
+      'medium_article_2_summary':
+          'Takımlarda sık görülen anti-pattern’leri esprili bir dille listeler. Yazıyı tersinden okuyarak neleri yapmanız gerektiğini ve hatalardan nasıl kaçınacağınızı öğrenin.',
+      'medium_article_3_title': 'Flutter Temiz Widget Kullanımı',
+      'medium_article_3_summary':
+          'Tek sorumluluk, okunabilirlik, widget parçalama, method extract ve Stateless/Stateful tercihleri üzerine pratik öneriler ve örnekler.',
       'app_quicko_description':
           '10\'dan fazla hızlı ve eğlenceli mini oyun koleksiyonu. Global skor tablosu, ilerleme takibi ve 10 dil desteği gibi özellikler içerir.',
       'app_quicko_feature_1': '10+ Hızlı ve Eğlenceli Mini Oyun',
@@ -273,6 +313,20 @@ class AppLocalizations {
       'skills_title': 'Yetenekler',
       'technologies': 'Çalıştığım Teknolojiler',
       'click_details': 'Detaylar için tıklayın',
+      'flutter_rec_exp':
+          'Başta fintech alanında olmak üzere 3 yıllık profesyonel deneyim.',
+      // Flutter recruiter-focused visible section
+      'flutter_rec_title': 'Flutter Geliştirme — Temel Uzmanlık',
+      'flutter_rec_intro':
+          'Ölçeklenebilirlik, performans ve sürdürülebilir kod odaklı; mobil ve web için üretim seviyesinde Flutter uygulamaları tasarlar, geliştirir ve yayınlarım. Temiz mimariyi pragmatik mühendislikle birleştirerek yerel hisli, kolay evrilen UI/UX sunarım.',
+      'flutter_rec_b1': 'Mimari: Clean Architecture, MVVM, katmanlı modüller, feature-first yapı',
+      'flutter_rec_b2': 'Durum: Provider, Bloc/Cubit; side-effect ve hata yönetimi pratikleri',
+      'flutter_rec_b3': 'Ağ: Dio/HTTP, interceptor, sayfalama, caching, offline-first',
+      'flutter_rec_b4': 'Performans: 60fps arayüz, profiling, görsel/asset optimizasyonu, isolates',
+      'flutter_rec_b5': 'Test/QA: unit/widget testleri, golden testler, CI-uyumlu build süreçleri',
+      'flutter_rec_b6': 'Mağaza/Yayın: imzalama, flavor, versiyonlama, mağaza metadatası ve gizlilik',
+      'flutter_rec_b7': 'Ürün: i18n/l10n, erişilebilirlik, analitik, growth deneyleri',
+      'flutter_rec_b8': 'Geliştirici Deneyimi: reusable widgetlar, design system, responsive web desteği',
       'flutter_expertise': 'Flutter Uzmanlığı',
       'android_expertise': 'Android Uzmanlığı',
       'firebase_expertise': 'Firebase Uzmanlığı',

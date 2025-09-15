@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:portfolio/widgets/interactive.dart';
 import 'package:portfolio/widgets/background_pattern.dart';
@@ -171,12 +170,17 @@ class _ArticleCard extends StatelessWidget {
                   height: 1.55,
                   color: theme.colorScheme.onSurface.withOpacity(0.85),
                 ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 16),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Pressable(
-                  onTap: () => launchUrl(Uri.parse(article.url)),
+                  onTap: () => launchUrl(
+                    Uri.parse(article.url),
+                    mode: LaunchMode.externalApplication,
+                  ),
                   child: HoverScale(
                     borderRadius: BorderRadius.circular(10),
                     child: Container(
@@ -189,9 +193,9 @@ class _ArticleCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
-                            color: theme.colorScheme.primary.withOpacity(0.3),
-                            blurRadius: 12,
-                            offset: const Offset(0, 4),
+                            color: theme.colorScheme.primary.withOpacity(0.2),
+                            blurRadius: 8,
+                            offset: const Offset(0, 3),
                           ),
                         ],
                       ),

@@ -349,7 +349,7 @@ class Skills extends StatelessWidget {
 
   Widget _buildSkillChip(ThemeData theme, String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
       decoration: BoxDecoration(
         color: theme.colorScheme.primary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
@@ -361,7 +361,7 @@ class Skills extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-          fontSize: 14,
+          fontSize: 13.5,
           fontWeight: FontWeight.w500,
           color: theme.colorScheme.primary,
         ),
@@ -487,10 +487,10 @@ class Skills extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
-                        color: theme.colorScheme.primary.withOpacity(0.12),
+                        color: theme.colorScheme.primary.withOpacity(0.1),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: theme.colorScheme.primary.withOpacity(0.2),
+                          color: theme.colorScheme.primary.withOpacity(0.18),
                         ),
                       ),
                       child: Row(
@@ -499,7 +499,7 @@ class Skills extends StatelessWidget {
                           Icon(
                             Icons.work_rounded,
                             size: 18,
-                            color: theme.colorScheme.primary,
+                            color: theme.colorScheme.primary.withOpacity(0.95),
                           ),
                           const SizedBox(width: 8),
                           Text(
@@ -663,7 +663,7 @@ class Skills extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: theme.colorScheme.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
@@ -673,7 +673,7 @@ class Skills extends StatelessWidget {
                   height: 50,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               Text(
                 title,
                 style: TextStyle(

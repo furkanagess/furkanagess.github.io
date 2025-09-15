@@ -14,6 +14,7 @@ Disallow: /flutter_service_worker.js
 Disallow: /flutter_bootstrap.js
 Disallow: /main.dart.js
 Disallow: /version.json
+Disallow: /web/
 
 # Allow important files
 Allow: /assets/

@@ -1,73 +1,51 @@
-## Furkan Çağlar – Portfolio (Flutter Web)
+## Furkan Çağlar – Portfolio
 
-Modern, fast, and SEO‑friendly personal portfolio built with Flutter Web.
+Discover my work as a Flutter Developer & Software Engineer. Explore real projects, shipped apps, technical articles, and the skills I use to build reliable, high‑quality mobile experiences.
 
-### Features
-- Multilingual UI (EN/TR) with `Localizations`
-- Responsive layout for desktop, tablet, and mobile
-- SEO tags (OpenGraph, Twitter Card, canonical, sitemap)
-- Deployed on GitHub Pages at `furkanages.com`
+### What you’ll find on the site
 
-### Tech Stack
-- **Framework**: Flutter (Web)
-- **Language**: Dart
-- **Hosting**: GitHub Pages
+- About: who I am, what I do, and my focus areas (fintech, mobile).
+- Projects: selected portfolio with context, stack, and results/impact.
+- Published Apps: production apps I’ve shipped and maintained.
+- Skills: core technologies and tools I use on a daily basis.
+- Blog/Medium: articles and insights I share with the community.
+- Contact: quick ways to reach me for collaboration, work, or questions.
 
-### Prerequisites
-- Flutter SDK installed and on PATH
-- Dart SDK (bundled with Flutter)
+### Value I bring
 
-Check your setup:
+- Production‑ready Flutter apps with strong architecture and clean code.
+- Fast iteration with Firebase and modern tooling.
+- App store delivery experience (end‑to‑end publishing and updates).
+- Fintech product experience and data‑driven problem solving.
 
-```bash
-flutter --version
-```
+### Who this portfolio is for
 
-### Quick Start (Local)
-```bash
-# Install dependencies
-flutter pub get
+- Recruiters/Hiring Managers evaluating Flutter talent.
+- Founders/Teams looking for a mobile developer to ship MVPs or scale apps.
+- Engineers seeking collaboration on Flutter/Firebase projects.
 
-# Run in Chrome
-flutter run -d chrome
-```
+### Keywords (ASO‑style)
 
-### Build
-```bash
-# Production build for web
-flutter build web --release
-```
-The output is generated under `build/web`.
+Flutter Developer, Mobile App Developer, Dart, Android, iOS, Firebase, Fintech, Cross‑platform, App Store, Google Play, Performance, UI/UX, State Management, Architecture, CI/CD, Publishing
 
-### Deploy (GitHub Pages)
-This repository publishes from the `gh-pages` branch.
+### How to use this site
 
-Typical flow:
-```bash
-# Commit your changes
-git add -A
-git commit -m "Update"
+- Browse projects to see scope, stack, and outcomes.
+- Check published apps to review live products.
+- Read articles for my approach to problem solving.
+- Use the contact section to get in touch quickly.
 
-# Push to gh-pages (triggers live update)
-git push origin gh-pages
-```
+### Contact & Profiles
 
-If you rebuild locally and need to update static web artifacts, ensure the root `index.html`, `manifest.json`, `sitemap.xml`, and assets are in sync. GitHub Pages will serve the latest commit on `gh-pages`.
+- Website: `https://furkanages.com`
+- GitHub: `https://github.com/furkanages`
+- LinkedIn: `https://linkedin.com/in/furkanages`
+- X/Twitter: `https://twitter.com/furkanages`
 
-### Project Structure
-- `lib/` – Flutter source code
-- `web/` – Flutter web bootstrap files
-- `index.html` (root) – SEO and favicon overrides for production
-- `assets/` – images, icons, fonts, files
+### Privacy
 
-### Customization
-- Favicon: set in `index.html` and `web/index.html` via `assets/icons/favicon.png`
-- SEO/OpenGraph: edit meta tags inside `index.html` files
-- Localization: see `lib/core/localization/`
+This website does not collect personal data beyond standard hosting analytics. If you reach out via the contact options, your message and contact details will be used solely to respond.
 
-### Troubleshooting
-- Favicon or assets not updating: hard refresh browser (Cmd/Ctrl+Shift+R) or clear cache. For GitHub Pages, allow a minute after push.
-- Mixed content/paths: verify `<base href>` in `web/index.html` and absolute paths in meta images.
+### Updates
 
-### License
-This project is provided as‑is for personal portfolio use.
+I periodically add new projects, app releases, and articles. Check back for fresh work and insights.

@@ -199,9 +199,9 @@ class Header extends StatelessWidget {
 
   Future<void> _downloadCV(BuildContext context) async {
     html.AnchorElement(
-      href: '/assets/files/caglar-furkan-resume.pdf',
+      href: '/assets/files/resume-furkancaglar.pdf',
     )
-      ..setAttribute('download', 'caglar-furkan-resume.pdf')
+      ..setAttribute('download', 'resume-furkancaglar.pdf')
       ..click();
   }
 

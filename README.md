@@ -2,14 +2,28 @@
 
 Discover my work as a Flutter Developer & Software Engineer. Explore real projects, shipped apps, technical articles, and the skills I use to build reliable, high‑quality mobile experiences.
 
-### What you’ll find on the site
+### What you'll find on the site
 
 - About: who I am, what I do, and my focus areas (fintech, mobile).
 - Projects: selected portfolio with context, stack, and results/impact.
-- Published Apps: production apps I’ve shipped and maintained.
+- Published Apps: production apps I've shipped and maintained.
 - Skills: core technologies and tools I use on a daily basis.
 - Blog/Medium: articles and insights I share with the community.
 - Contact: quick ways to reach me for collaboration, work, or questions.
+
+### Featured Projects
+
+#### SpookyAI: Halloween Image Generator
+An AI-powered Halloween image generator that transforms selfies into spooky, cinematic Halloween art. Built with Flutter and advanced AI integration, this creative tool offers exclusive prompts and fast image generation for Halloween-themed content.
+
+**Key Features:**
+- AI-powered image transformation
+- Halloween-themed artistic filters
+- Fast generation capabilities
+- User-friendly interface
+- Creative prompt system
+
+**Technologies:** Flutter, AI Integration, Image Processing, Halloween Themes, User Interface, Creative Tools
 
 ### Value I bring
 
@@ -26,7 +40,7 @@ Discover my work as a Flutter Developer & Software Engineer. Explore real projec
 
 ### Keywords (ASO‑style)
 
-Flutter Developer, Mobile App Developer, Dart, Android, iOS, Firebase, Fintech, Cross‑platform, App Store, Google Play, Performance, UI/UX, State Management, Architecture, CI/CD, Publishing
+Flutter Developer, Mobile App Developer, Dart, Android, iOS, Firebase, Fintech, Cross‑platform, App Store, Google Play, Performance, UI/UX, State Management, Architecture, CI/CD, Publishing, AI Integration, Image Processing, Creative Tools, Halloween Apps
 
 ### How to use this site
 

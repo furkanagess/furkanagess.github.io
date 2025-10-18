@@ -14,7 +14,7 @@ class Projects extends StatelessWidget {
       case 0:
         return ProjectCard(
           title: 'Quicko Minigames',
-          imagePath: 'assets/icons/new_logo.png',
+          imagePath: 'assets/icons/quicko-glow.png',
           iconColor: Colors.purple,
           description: AppLocalizations.of(context).get('project_quicko'),
           technologies: [
@@ -89,8 +89,8 @@ class Projects extends StatelessWidget {
         );
       case 5:
         return ProjectCard(
-          title: 'Elements: Learn & Play',
-          imagePath: 'assets/icons/elements_logo.png',
+          title: 'Periodic Table: Learn & Play',
+          imagePath: 'assets/icons/last-pr-icon.png',
           iconColor: Colors.teal,
           description: AppLocalizations.of(context).get('project_elements'),
           technologies: [
@@ -100,6 +100,23 @@ class Projects extends StatelessWidget {
             AppLocalizations.of(context).get('topic_educational')
           ],
           githubUrl: 'https://github.com/furkanagess/Elements-Learn-and-Play',
+        );
+      case 6:
+        return ProjectCard(
+          title: 'SpookyAI: Halloween Image Gen',
+          imagePath: 'assets/icons/app_icon.png',
+          iconColor: Colors.orange,
+          description:
+              'AI-powered Halloween image generator that transforms selfies into spooky, cinematic Halloween art with exclusive prompts and fast generation.',
+          technologies: [
+            'Flutter',
+            'AI Integration',
+            'Image Processing',
+            'Halloween Themes',
+            'User Interface',
+            'Creative Tools'
+          ],
+          githubUrl: 'https://github.com/furkanagess/Quicko-Minigames',
         );
       default:
         return ProjectCard(
@@ -187,7 +204,7 @@ class Projects extends StatelessWidget {
                       runSpacing: 30,
                       children: [
                         ...List.generate(
-                          7, // Toplam proje sayısı
+                          8, // Toplam proje sayısı
                           (index) => SizedBox(
                             width: cardWidth,
                             child: Reveal(

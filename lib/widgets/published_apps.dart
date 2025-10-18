@@ -74,66 +74,107 @@ class PublishedApps extends StatelessWidget {
             const SizedBox(height: 60),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 1200),
-              child: Wrap(
-                spacing: 30,
-                runSpacing: 30,
-                alignment: WrapAlignment.center,
-                children: [
-                  Reveal(
-                    delay: const Duration(milliseconds: 80),
-                    child: _buildAppCard(
-                      context,
-                      title: 'Quicko – Minigames',
-                      imagePath: 'assets/icons/new_logo.png',
-                      description: AppLocalizations.of(context)
-                          .get('app_quicko_description'),
-                      features: [
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_1'),
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_2'),
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_3'),
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_4'),
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_5'),
-                        AppLocalizations.of(context)
-                            .get('app_quicko_feature_6'),
-                      ],
-                      androidUrl:
-                          'https://play.google.com/store/apps/details?id=com.furkanages.quicko_app',
-                      iosUrl:
-                          'https://apps.apple.com/us/app/quicko-minigames/id6751204576',
-                    ),
-                  ),
-                  Reveal(
-                    delay: const Duration(milliseconds: 160),
-                    child: _buildAppCard(
-                      context,
-                      title: 'Periodic Table: Learn & Play',
-                      imagePath: 'assets/icons/elements_logo.png',
-                      description: AppLocalizations.of(context)
-                          .get('app_elements_description'),
-                      features: [
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_1'),
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_2'),
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_3'),
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_4'),
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_5'),
-                        AppLocalizations.of(context)
-                            .get('app_elements_feature_6'),
-                      ],
-                      androidUrl:
-                          'https://play.google.com/store/apps/details?id=com.furkanages.elements',
-                    ),
-                  ),
-                ],
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final isSmallScreen = MediaQuery.of(context).size.width < 768;
+                  final cardWidth = isSmallScreen
+                      ? constraints.maxWidth
+                      : (constraints.maxWidth - 60) / 3;
+                  return Wrap(
+                    spacing: 30,
+                    runSpacing: 30,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: cardWidth,
+                        child: Reveal(
+                          delay: const Duration(milliseconds: 80),
+                          child: _buildAppCard(
+                            context,
+                            title: 'Quicko – Minigames',
+                            imagePath: 'assets/icons/quicko-glow.png',
+                            description: AppLocalizations.of(context)
+                                .get('app_quicko_description'),
+                            features: [
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_1'),
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_2'),
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_3'),
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_4'),
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_5'),
+                              AppLocalizations.of(context)
+                                  .get('app_quicko_feature_6'),
+                            ],
+                            androidUrl:
+                                'https://play.google.com/store/apps/details?id=com.furkanages.quicko_app',
+                            iosUrl:
+                                'https://apps.apple.com/us/app/quicko-minigames/id6751204576',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: cardWidth,
+                        child: Reveal(
+                          delay: const Duration(milliseconds: 160),
+                          child: _buildAppCard(
+                            context,
+                            title: 'Periodic Table: Learn & Play',
+                            imagePath: 'assets/icons/last-pr-icon.png',
+                            description: AppLocalizations.of(context)
+                                .get('app_elements_description'),
+                            features: [
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_1'),
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_2'),
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_3'),
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_4'),
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_5'),
+                              AppLocalizations.of(context)
+                                  .get('app_elements_feature_6'),
+                            ],
+                            androidUrl:
+                                'https://play.google.com/store/apps/details?id=com.furkanages.elements',
+                            iosUrl:
+                                'https://apps.apple.com/us/app/periodic-table-learn-play/id6752439893',
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: cardWidth,
+                        child: Reveal(
+                          delay: const Duration(milliseconds: 240),
+                          child: _buildAppCard(
+                            context,
+                            title: 'SpookyAI: Halloween Image Gen',
+                            imagePath: 'assets/icons/app_icon.png',
+                            description:
+                                'Turn your selfies into spooky Halloween AI art! Unlock exclusive prompts, generate scary images, and create cinematic edits in seconds.',
+                            features: [
+                              'AI-Powered Halloween Images',
+                              'Spooky & Fun Themes',
+                              'Exclusive Prompts',
+                              'Fast Generation',
+                              'User-Friendly Interface',
+                              'High-Quality Results',
+                            ],
+                            androidUrl:
+                                'https://play.google.com/store/apps/details?id=com.furkanages.quicko_app',
+                            iosUrl:
+                                'https://apps.apple.com/us/app/spookyai-halloween-image-gen/id6753217831',
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
@@ -150,6 +191,7 @@ class PublishedApps extends StatelessWidget {
     required String androidUrl,
     String? iosUrl,
     String? imagePath,
+    String? githubUrl,
   }) {
     final theme = Theme.of(context);
     final isSmallScreen = MediaQuery.of(context).size.width < 768;
@@ -258,6 +300,21 @@ class PublishedApps extends StatelessWidget {
                   ],
                 ],
               ),
+              if (githubUrl != null) ...[
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _buildStoreButton(
+                        context,
+                        icon: FontAwesomeIcons.github,
+                        label: 'GitHub',
+                        onTap: () => _launchUrl(githubUrl),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ],
           ),
         ));

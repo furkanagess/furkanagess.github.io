@@ -172,6 +172,31 @@ class PublishedApps extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        width: cardWidth,
+                        child: Reveal(
+                          delay: const Duration(milliseconds: 320),
+                          child: _buildAppCard(
+                            context,
+                            title: 'Gallery Cleaner: Swipe Photo',
+                            imagePath: 'assets/icons/gallery_logo.png',
+                            description:
+                                'Gallery Cleaner: Swipe Photo helps you effortlessly clean, organize, and optimize your photo gallery.',
+                            features: const [
+                              'AI Blur Detection',
+                              'Duplicate Photo Finder',
+                              'Swipe-to-Delete Cleanup',
+                              'One-Tap Smart Clean',
+                              'On-Device Privacy',
+                              'Storage Optimization',
+                            ],
+                            androidUrl:
+                                'https://play.google.com/store/apps/details?id=com.furkanages.gallerycleaner',
+                            iosUrl:
+                                'https://apps.apple.com/us/app/gallery-cleaner-swipe-photo/id6754893118',
+                          ),
+                        ),
+                      ),
                     ],
                   );
                 },

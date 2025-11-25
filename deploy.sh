@@ -15,7 +15,7 @@ flutter pub get
 
 # Build for web with proper base href
 echo "🔨 Building Flutter web app..."
-flutter build web --release --base-href /
+flutter build web --release --base-href / --pwa-strategy=none
 
 # Copy CNAME file to build directory
 echo "📄 Copying CNAME file..."

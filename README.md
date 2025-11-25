@@ -14,9 +14,11 @@ Discover my work as a Flutter Developer & Software Engineer. Explore real projec
 ### Featured Projects
 
 #### SpookyAI: Halloween Image Generator
+
 An AI-powered Halloween image generator that transforms selfies into spooky, cinematic Halloween art. Built with Flutter and advanced AI integration, this creative tool offers exclusive prompts and fast image generation for Halloween-themed content.
 
 **Key Features:**
+
 - AI-powered image transformation
 - Halloween-themed artistic filters
 - Fast generation capabilities
